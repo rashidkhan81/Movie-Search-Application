@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up</title>
+<style>
+
+
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('/images/tiger.jpg'); /* Add the path to your background image here */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        width: 400px;
+        background-color: #5e057e;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        color: #fff;
+    }
+    .container h2 {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .form-group input {
+        width: 100%;
+        padding: 8px;
+        border: none;
+        border-radius: 5px;
+    }
+    .form-group input[type="submit"] {
+        background-color: #fff;
+        color: #5e057e;
+        cursor: pointer;
+    }
+    .form-group input[type="submit"]:hover {
+        background-color: #c299d0;
+    }
+    .success-message {
+        background-color: blue;
+        color: #fff;
+        padding: 10px;
+        border-radius: 3px;
+        text-align: center; 
+    }
+    .register-link a {
+        color: red;
+    }
+
+
+
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        width: 400px;
+        background-color: #5e057e;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        color: #fff;
+    }
+    .container h2 {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .form-group input {
+        width: 100%;
+        padding: 8px;
+        border: none;
+        border-radius: 5px;
+    }
+    .form-group input[type="submit"] {
+        background-color: #fff;
+        color: #5e057e;
+        cursor: pointer;
+    }
+     button[type="submit"]:hover{
+    
+    background-color:#c299d0;
+    
+    }
+    .success-message{
+    background-color:blue;
+    color:#fff;
+    padding:10px;
+    border-radius:3px;
+    text-align:center; 
+    }
+    /*  /* Styling the Register link */
+    .register-link a {
+        color: red;
+    }
+    
+    /* Hover effect for Register link */
+   
+</style>
+</head>
+<body>
+<div class="container">
+<div class="form-container">
+
+
+<div th:if="${param.success}">
+<div class="success-message">
+
+<p class="text-center text-success" style="color: yellow;">Registration successfully</p>
+</div>
+</div>
+   
+
+    <h2>Sign Up</h2>
+
+    
+    
+    
+    <form  
+    method="post"
+    role="form"
+    th:action="@{/register}"
+    th:object="${user}"
+    
+    >
+    
+      <div class="form-group">
+            <label for="text">Full Name:</label>
+            <input th:field="*{fullname}" type="text" id="fullname" name="fullname" required>
+        </div>
+        
+        
+        
+       <div class="form-group">
+		    <label for="username">User Name:</label>
+		    <input th:field="*{username}" type="text" id="username" name="username" required>
+		<!--     <span th:if="${userExists}" style="color:red;">Name is taken</span>
+ -->      </div>
+
+        
+        
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input th:field="*{password}" type="password" id="password" name="password" required>
+        </div>
+        
+      
+       
+       
+        
+        
+        <div class="form-group">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+     <span class="register-link">Already Sine Up   <a th:href="@{/login}">Sign in</a></span>
+</div>
+</div>
+
+
+<script>
+  function showRegisterSuccess() {
+    var messageElement = document.getElementById("register-success-message");
+    messageElement.style.display = "block"; // Show the message
+    
+    setTimeout(function() {
+      messageElement.style.display = "none"; // Hide the message after 5 seconds
+    }, 5000);
+  }
+</script>
+</body>
+</html>
+
+
+
+
